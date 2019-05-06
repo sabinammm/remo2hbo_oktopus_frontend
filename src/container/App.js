@@ -26,10 +26,10 @@ class App extends Component {
       };
       this.ekgData = [];
     }
-  
+
     componentDidMount() {
       var that = this;
-      
+
       this.evtSource.onerror = function (e) {
         console.log("error: ", e);
         that.setState(Object.assign({}, { connection: "error" }));
@@ -100,7 +100,7 @@ class App extends Component {
             OKTOPUS BIOSIGNAL MONITORING
           <IconBar/>
           </div>
-          
+
           <div id="grid-container">
 
             <div className="biosignal-EKG">
@@ -113,8 +113,8 @@ class App extends Component {
               <GraphSignal bioSignalType="EKG" bioSignalValue={this.state.ekg} valueRangeMin={-10} valueRangeMax={600} />
             </div>
 
-            <div className="biosignal-Temp"> 
-              <NumericSignal bioSignalType="Temp °C" bioSignalValue={this.state.temperature} /> 
+            <div className="biosignal-Temp">
+              <NumericSignal bioSignalType="Temp °C" bioSignalValue={(this.state.temperature)/10} /> 
             </div>
             <div className="biosignal-HR" >
               <NumericSignal bioSignalType="HR / min" bioSignalValue={this.state.heartrate} />
@@ -122,8 +122,8 @@ class App extends Component {
             <div className="biosignal-sO2"  >
               <NumericSignal bioSignalType="spO2 %" bioSignalValue={this.state.oxygen} />
             </div>
-            <div  className="biosignal-RR"> 
-              <NumericSignal bioSignalType="Sys / Dia mmHG" bioSignalValue={this.state.diastole} bioSignalValueAddOn={this.state.systole} /> 
+            <div  className="biosignal-RR">
+              <NumericSignal bioSignalType="Sys / Dia mmHG" bioSignalValue={this.state.diastole} bioSignalValueAddOn={this.state.systole} />
             </div>
 
           </div>
@@ -135,4 +135,3 @@ class App extends Component {
   }
 
   export default App;
-
